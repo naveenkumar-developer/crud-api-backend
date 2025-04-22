@@ -10,10 +10,13 @@ const {
   deleteUserData,
 } = require("../controllers/userControllers");
 
+// MIDDLE WARE 
+const upload = require("../middlewares/upload")
+
 router
   .route("/")
   .get(getAllusers)
-  .post(addUserData);
+  .post(upload.single('file'), addUserData);
 
 router
   .route("/:id")
